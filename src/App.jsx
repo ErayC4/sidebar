@@ -10,11 +10,11 @@ function App() {
 
   const sidebarContent = (
     <div
-      className={`flex items-center justify-center bg-green-500 h-screen w-32 transition-all duration-300 ${
+      className={`flex items-center justify-center bg-green-500 h-screen w-32 duration-300 ${
         sidebarOpen ? "ml-0" : "-ml-32"
       }`}
     >
-      <p className="text-white text-2xl">Lorem ipsum dolor sit amet</p>
+      <p className="text-white text-2xl">Here could be content</p>
     </div>
   );
 
@@ -22,7 +22,10 @@ function App() {
     <div>
       <div className="fixed inset-y-0 flex">
         {sidebarContent}
-        <button onClick={clickHandler} className="ml-2 transition-all duration-300">
+        <button
+          onClick={clickHandler}
+          className="ml-2"
+        >
           {sidebarOpen ? (
             <img src="../public/chevron-compact-left.svg" alt="" />
           ) : (
@@ -31,8 +34,8 @@ function App() {
         </button>
       </div>
 
-      <p className="ml-8 bg-blue-400 text-2xl">
-        Lorem ipsum
+      <p className={` bg-blue-400 text-2xl ${sidebarOpen ? "ml-40" : "ml-8"}`}>
+        Here could be content
       </p>
     </div>
   );

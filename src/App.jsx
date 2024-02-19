@@ -1,14 +1,19 @@
 import React from "react";
 import "./index.css";
+
 function App() {
-  const [sidebarButtonOpen, setSidebarButtonOpen] = React.useState(false);
+  const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
   function clickHandler() {
-    setSidebarButtonOpen((prevSidebarButton) => !prevSidebarButton);
+    setSidebarOpen((prevSidebar) => !prevSidebar);
   }
 
   const sidebarContent = (
-    <div className="flex items-center justify-center bg-green-500 h-screen w-32">
+    <div
+      className={`flex items-center justify-center bg-green-500 h-screen w-32 transition-all duration-300 ${
+        sidebarOpen ? "ml-0" : "-ml-32"
+      }`}
+    >
       <p className="text-white text-2xl">Lorem ipsum dolor sit amet</p>
     </div>
   );
@@ -16,9 +21,9 @@ function App() {
   return (
     <div>
       <div className="fixed inset-y-0 flex">
-        {sidebarButtonOpen && sidebarContent}
-        <button onClick={clickHandler} className="ml-2">
-          {sidebarButtonOpen ? (
+        {sidebarContent}
+        <button onClick={clickHandler} className="ml-2 transition-all duration-300">
+          {sidebarOpen ? (
             <img src="../public/chevron-compact-left.svg" alt="" />
           ) : (
             <img src="../public/chevron-compact-right.svg" alt="" />
@@ -26,10 +31,8 @@ function App() {
         </button>
       </div>
 
-      <p className="ml-8 bg-blue-400 text-2xl w-full">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Hic quas eos
-        corrupti rem ullam incidunt nulla culpa quod, minus non dolor molestiae
-        voluptas error? Odit aliquam nulla natus inventore nostrum.
+      <p className="ml-8 bg-blue-400 text-2xl">
+        Lorem ipsum
       </p>
     </div>
   );
